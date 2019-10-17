@@ -1,6 +1,6 @@
 from math import sin, pi, floor
-from cmath import sqrt
-from numpy import angle, conjugate, sin as sinz, cos, real, imag
+from cmath import sqrt, sin as sinz, cos
+from numpy import angle, conjugate, real, imag
 import builtins
 
 def zadanie1():
@@ -95,7 +95,7 @@ def zadanie10():
     print('Część urojona z cos(i): %s' % zcos.imag)
 
     print('\nZależność jest spełniona: ')
-    print(round(sinz(z)**2 + cos(z)**2, 4))
+    print(sinz(z)**2 + cos(z)**2)
 
 def main():
     work = False
