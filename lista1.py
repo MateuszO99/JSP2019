@@ -1,6 +1,6 @@
 from math import sin, pi, floor
 from cmath import sqrt
-from numpy import angle, conjugate, sin, cos, real, imag
+from numpy import angle, conjugate, sin as sinz, cos, real, imag
 import builtins
 
 def zadanie1():
@@ -85,7 +85,7 @@ def zadanie9():
 def zadanie10():
     print('Zadanie 10: ')
     z = complex(0, 1)
-    zsin = sin(z)
+    zsin = sinz(z)
     zcos = cos(z)
 
     print('Część rzeczywista z sin(i): %s' % zsin.real)
@@ -95,7 +95,7 @@ def zadanie10():
     print('Część urojona z cos(i): %s' % zcos.imag)
 
     print('\nZależność jest spełniona: ')
-    print(round(sin(z)**2 + cos(z)**2, 4))
+    print(round(sinz(z)**2 + cos(z)**2, 4))
 
 def main():
     work = False
