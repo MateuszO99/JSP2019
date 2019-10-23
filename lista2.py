@@ -3,8 +3,7 @@ from itertools import chain
 
 def zadanie1():
     print('Zadanie 1:')
-    for i in range(1, 20):
-        print(1.2 * exp(1) + 3 + 34.5)
+    print(20 * ('%s\n' % (1.2 * exp(1) + 3 + 34.5)))
 
 def zadanie2():
     print('Zadanie 2:')
