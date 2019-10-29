@@ -122,26 +122,24 @@ def zadanie9():
     print('Zadanie 9\n')
     m = int(input('Podaj liczbę wierszy: '))
     n = int(input('Podaj liczbę kolumn: '))
-    listNumber = []
+    listNumber = [[0 for i in range(n)] for j in range(m)]
     for i in range(m):
-        rowNumber = []
         for j in range(n):
-            rowNumber.append(i * j)
-        listNumber.append(rowNumber)
+            listNumber[i][j] = i*j
+
     for line in listNumber:
-        print(line)
+        for num in line:
+            print(num, end=' ')
+        print()
 
 def zadanie10():
     print('Zadanie 10\n')
     listNumber = []
     for number in range(100, 401):
         num = str(number)
-        check = []
-        for n in num:
-            if int(n) % 2 == 1:
-                check.append(False)
-        if not False in check:
-            listNumber.append(number)
+        if '1' in num or '3' in num or '5' in num or '7' in num or '9' in num:
+            continue
+        listNumber.append(num)
 
     for l in listNumber:
         print(l, end=', ')
