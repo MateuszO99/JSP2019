@@ -1,0 +1,20 @@
+nr PESEL:30092826712
+ data urodzenia 28-09-1930;	 p³eæ: Me¿czyzna
+nr PESEL:14861974462
+ data urodzenia 19-6-1814;	 p³eæ: Kobieta
+nr PESEL:79281819003
+ data urodzenia 18-8-2079;	 p³eæ: Kobieta
+nr PESEL:53871539915
+ data urodzenia 15-7-1853;	 p³eæ: Me¿czyzna
+nr PESEL:00480875321
+ data urodzenia 08-8-2100;	 p³eæ: Kobieta
+nr PESEL:17460439961
+ data urodzenia 04-6-2117;	 p³eæ: Kobieta
+nr PESEL:09902398646
+ data urodzenia 23-10-1809;	 p³eæ: Kobieta
+nr PESEL:66843035748
+ data urodzenia 30-4-1866;	 p³eæ: Kobieta
+nr PESEL:55231985226
+ data urodzenia 19-3-2055;	 p³eæ: Kobieta
+nr PESEL:60291110800
+ data urodzenia 11-9-2060;	 p³eæ: Kobieta

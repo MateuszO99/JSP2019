@@ -1,7 +1,6 @@
 from sys import exit
 
-def zadanie1():
-    print('Zadanie 1\n')
+def zadanie1(number):
     first = {'jeden': 1, 'dwa': 2, 'trzy': 3, 'cztery': 4, 'pięć': 5,
              'sześć': 6, 'siedem': 7, 'osiem': 8, 'dziewięć': 9}
     second = {'dziesięć': 10, 'jedenaście': 11, 'dwanaście': 12,
@@ -10,8 +9,6 @@ def zadanie1():
              'dziewiętnaście': 19}
     third = {'dwadzieścia': 2, 'trzydzieści': 3, 'czterdzieści': 4,
              'pięćdziesiąt': 5}
-
-    number = input('Podaj słownie liczbę z przedziału od 1 do 59: ').lower()
     numbers = []
 
     for n in number.split():
@@ -19,26 +16,25 @@ def zadanie1():
 
     if len(numbers) == 1:
         if number in first:
-            print(first[number])
+            return first[number]
         elif number in second:
-            print(second[number])
+            return second[number]
         elif number in third:
-            print('%s0' % third[number])
+            return third[number] * 10
         else:
-            print('Podano złą wartość')
+            return 'Podano złą wartość'
     elif len(numbers) == 2:
         if numbers[0] in third:
             if numbers[1] in first:
-                print('%s%s' % (third[numbers[0]],  first[numbers[1]]))
+                return int(str(third[numbers[0]]) + str(first[numbers[1]]))
             else:
-                print('Podano złą wartość')
+                return 'Podano złą wartość'
         else:
-            print('Podano złą wartość')
+            return 'Podano złą wartość'
     else:
-        print('Podano złą wartość')
+        return 'Podano złą wartość'
 
-def zadanie2():
-    print('Zadanie 2\n')
+def zadanie2(number):
     first = {'1': 'jeden', '2': 'dwa', '3': 'trzy', '4': 'cztery', '5': 'pięć',
              '6': 'sześć', '7': 'siedem', '8': 'osiem', '9': 'dziewięć', '0': ''}
     second = {'0': 'dziesięć', '1': 'jedenaście', '2': 'dwanaście',
@@ -52,7 +48,6 @@ def zadanie2():
               '5': 'pięćset', '6': 'sześćset', '7': 'siedemset', '8': 'osiemset',
               '9': 'dziewięćset', '0': ''}
     fifth = {'1': 'tysiąc'}
-    number = int(input('Podaj liczbę z zakresu od 1 do 1999: '))
     result = ''
 
     if number > 0 and number < 2000:
@@ -64,9 +59,7 @@ def zadanie2():
                 # Zapisujemy liczbę jedności
                 result += first[sNumber[-1]]
             else:
-                print('Podano nie prawidłowe dane')
-                result = ''
-                exit()
+                return 'Podano nie prawidłowe dane'
 
             if len(sNumber) > 1:
                 # Sprawdzamy liczbę dziesiątek
@@ -75,15 +68,13 @@ def zadanie2():
                     if sNumber[-2] == '0':
                         pass
                     else:
-                        result = '%s %s' % (third[sNumber[-2]], result)
+                        result = '{} {}'.format(third[sNumber[-2]], result)
                 elif sNumber[-2] == '1':
                     # Zapisujemy liczbę dziesiątek i jedności
                     if sNumber[-1] in second:
                         result = second[sNumber[-1]]
                 else:
-                    print('Podano nie prawidłowe dane')
-                    result = ''
-                    exit()
+                    return 'Podano nie prawidłowe dane'
 
                 if len(sNumber) > 2:
                     # Sprawdzamy liczbę setek
@@ -92,11 +83,9 @@ def zadanie2():
                         if sNumber[-3] == '0':
                             pass
                         else:
-                            result = '%s %s' % (fourth[sNumber[-3]], result)
+                            result = '{} {}'.format(fourth[sNumber[-3]], result)
                     else:
-                        print('Podano nie prawidłowe dane')
-                        result = ''
-                        exit()
+                        return 'Podano nie prawidłowe dane'
 
                     if len(sNumber) == 4:
                         # Sprawdzamy liczbę tysięcy
@@ -104,15 +93,12 @@ def zadanie2():
                             #Zapisujemy liczbę tysięcy
                             result = '%s %s' % (fifth[sNumber[0]], result)
                         else:
-                            print('Podano nie prawidłowe dane')
-                            result = ''
-                            exit()
+                            return 'Podano nie prawidłowe dane'
         else:
-            print('Podano nie prawidłowe dane')
-            result = ''
-        print(result)
+            return 'Podano nie prawidłowe dane'
+        return result
     else:
-        print('Podano nie prawidłowe dane')
+        return 'Podano nie prawidłowe dane'
 
 def create_num(myList, number):
     num = ''
@@ -262,6 +248,20 @@ def zadanie3():
     else:
         print(result)
 
+def code(myString, key):
+    for s in myString:
+        if s in key:
+            myString = myString.replace(s, key[s])
+    return myString
+
+def zadanie4Encode(myString):
+    key = {'a': 'y', 'e': 'i', 'i': 'o', 'o': 'a', 'y': 'e'}
+    return code(myString, key)
+
+def zadanie4Decode(myString):
+    key = {'y': 'a', 'i': 'e', 'o': 'i', 'a': 'o', 'e': 'y'}
+    return code(myString, key)
+
 def main():
     while True:
         try:
@@ -271,13 +271,26 @@ def main():
             print('Numer zadania musi być od 1 do 5!')
 
     if exercise == 1:
-        zadanie1()
+        print(zadanie1('trzydzieści trzy'))
+        assert zadanie1('trzydzieści trzy') == 33
+        print(zadanie1('trzynaście'))
+        assert zadanie1('trzynaście') == 13
+
     elif exercise == 2:
-        zadanie2()
+        print(zadanie2(698))
+        assert zadanie2(698) == 'sześćset dziewięćdziesiąt osiem'
+        print(zadanie2(1511))
+        assert zadanie2(1511) == 'tysiąc pięćset jedenaście'
+
     elif exercise == 3:
         zadanie3()
+
     elif exercise == 4:
-        zadanie4()
+        print(zadanie4Encode('to jest moj tekst'))
+        assert zadanie4Encode('to jest moj tekst') == 'ta jist maj tikst'
+        print(zadanie4Decode(zadanie4Encode('to jest moj tekst')))
+        assert zadanie4Decode(zadanie4Encode('to jest moj tekst')) == 'to jest moj tekst'
+
     else:
         print('Nie ma takiego zadania')
 
