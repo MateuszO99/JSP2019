@@ -33,7 +33,7 @@ def change(i, move):
     return i
 
 def size(fileName, move):
-    file = open(fileName, encoding='utf-8')
+    file = open(fileName, 'r', encoding='utf-8')
 
     result = ''
     for line in file.readlines():
@@ -51,6 +51,7 @@ def size(fileName, move):
 
 def checkFile(filePath):
     fileName = Path(filePath).name
+    chdir(path.dirname(filePath))
 
     if path.exists(fileName):
         return fileName
@@ -102,7 +103,7 @@ def findFile(filePath):
                 move = int(move[0] + move[1])
             else:
                 move = int(move[0])
-            result = size(myFile.group(), -move)
+            result = size(path.join(filePath, myFile.group()), -move)
             save(result, filePath, -move, info='deszyfrowany')
         except:
             continue
